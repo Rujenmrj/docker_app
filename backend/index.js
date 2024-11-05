@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');  // Import the CORS package
-
+const imagepath="https://image.rujenm.com.np/"
 const app = express();
 const PORT = 3000;
 
@@ -19,5 +19,5 @@ app.listen(PORT,() => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 app.get('/api/product/bird', (req, res) => {
-  res.json({ img: 'https://image.rujenm.com.np/placehold.png',name: 'Bird', price: 1000, description:"description place holder"});
+  res.json({ img: imagepath+"placehold.png",name: 'Bird', price: 1000, description:"description place holder"});
 })
