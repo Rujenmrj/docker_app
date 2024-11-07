@@ -12,12 +12,111 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/data', (req, res) => {
-  res.json({ message: 'Here is some data', data: [1, 2, 3, 4,5,6,7,8,9,10] });
+  res.json({ message: 'Here is some data', data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] });
 });
 
 app.listen(PORT,() => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 app.get('/api/product/bird', (req, res) => {
-  res.json({ img: imagepath+"placehold.png",name: 'Bird', price: 1000, description:"description place holder"});
-})
+  res.json([{ 
+    img: imagepath+"test.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { img: imagepath+"logo1.jpg",
+    name: 'Bird', 
+    price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { img: imagepath+"logo1.jpg",
+    name: 'Bird', 
+    price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  },
+  { 
+    img: imagepath+"logo1.jpg",
+    name: 'Bird', price: 1000, 
+    description:"description place holder"
+  }]);
+});
