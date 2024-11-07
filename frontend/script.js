@@ -1,6 +1,6 @@
 // frontend/script.js
 
-document.getElementById('fetchDataBtn').addEventListener('click', fetchData);
+// document.getElementById('fetchDataBtn').addEventListener('click', fetchData);
 
 async function fetchData() {
   console.log('fetching product');
