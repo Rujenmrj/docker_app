@@ -53,10 +53,10 @@ services:
     container_name: db
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: "SeveNO62"
+      MYSQL_ROOT_PASSWORD: "SeveN062"
       MYSQL_DATABASE: "mydatabase"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./database/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -68,6 +68,7 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: db
+      PMA_PORT: 3306 
     ports:
       - "8082:80"
     depends_on:

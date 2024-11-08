@@ -7,9 +7,13 @@ async function fetchData() {
     const data = await response.json();
     console.log('Product fetched:', data);
     const productDisplay = document.getElementById('loaddata');
+    let i=0;
     data.forEach(element => {
+      i++;
       div=document.createElement('div');
       div.setAttribute('class',"card");
+      div.setAttribute('id',`card${i}`);
+      div.setAttribute('onclick',"view()");
       div.innerHTML=`<div class="img-card"><img src="${element['img']}" alt="product image"></div>
       <div class="card-body">
       <h3>${element['name']}</h3>
@@ -17,7 +21,6 @@ async function fetchData() {
       <p>${element['description']}</p>
       </div>`
       productDisplay.appendChild(div);
-      
     });
    /* productDisplay.innerHTML = `
     <div id=card>
@@ -38,4 +41,8 @@ async function fetchData() {
     const element = document.getElementById("header");
     element.classList.add("animate");
   }
+}
+function view(){
+  // window.location.href = "product.html";
+  console.log('clicked');
 }
