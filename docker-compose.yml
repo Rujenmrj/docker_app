@@ -18,7 +18,9 @@ services:
 
   php:
     container_name: php-fpm
-    image: php:fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     networks:
       - mynet
     volumes:
@@ -43,7 +45,7 @@ services:
       - "3000:3000"
     volumes:
       - ./backend:/app
-    command: bash -c "npm install express cors mysql2 & npx nodemon index.js "
+    command: bash -c "npm install --save-dev nodemon  & npm install express cors mysql2 & npx nodemon index.js "
     working_dir: /app
     networks:
       - mynet

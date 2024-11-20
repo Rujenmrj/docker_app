@@ -1,19 +1,17 @@
 async function fetchData() {
-  console.log('fetching product');
-  time=new Date();
-  console.log(time);
   try {
     const response = await fetch('https://backend.rujenm.com.np/api/product/bird');
     const data = await response.json();
     console.log('Product fetched:', data);
     const productDisplay = document.getElementById('loaddata');
+    productDisplay.classList.add("active");
     let i=0;
     data.forEach(element => {
       i++;
       div=document.createElement('div');
       div.setAttribute('class',"card");
       div.setAttribute('id',`card${i}`);
-      div.setAttribute('onclick',"view()");
+      div.setAttribute('onclick',`fetchViewProduct('bir')`);
       div.innerHTML=`<div class="img-card"><img src="${element['img']}" alt="product image"></div>
       <div class="card-body">
       <h3>${element['name']}</h3>
@@ -22,17 +20,6 @@ async function fetchData() {
       </div>`
       productDisplay.appendChild(div);
     });
-   /* productDisplay.innerHTML = `
-    <div id=card>
-      <img src="${data['img']}" alt="product image">
-      <div id="card-body">
-      <h3>${data['name']}</h3>
-      <p>Price: ${data['price']}</p>
-      <p>${data['description']}</p>
-      </div>
-    </div>
-    `;*/
-	  // productDisplay.innerHTML=data[0].name;
   } catch (error) {
     console.error('Error fetching product:', error);
     document.getElementById('loaddata').innerText = 'Error fetching product.';
@@ -42,7 +29,44 @@ async function fetchData() {
     element.classList.add("animate");
   }
 }
-function view(){
-  // window.location.href = "product.html";
-  console.log('clicked');
+async function loading(){
+  const element = document.getElementById("header");
+  const productView = document.getElementById('loadview');
+  const productDisplay = document.getElementById('loaddata');
+  element.classList.add("animate-reverse");
+  productView.classList.add("active");
+  productDisplay.classList.remove("active");
+  productDisplay.classList.add("inactive");
+}
+async function fetchViewProduct(id){
+  try {
+    await loading();
+    const response = await fetch(`https://backend.rujenm.com.np/api/product/${id}`);
+    const data = await response.json();
+    console.log('Product fetched:', data);
+    const productDisplay = document.getElementById('loadview');
+    let i=0;
+    data.forEach(element => {
+      i++;
+      div=document.createElement('div');
+      div.setAttribute('class',"card");
+      div.setAttribute('id',`card${i}`);
+      div.innerHTML=`<div class="img-card"><img src="${element['img']}" alt="product image"></div>
+      <div class="card-body">
+      <h3>${element['name']}</h3>
+      <p>Price: ${element['price']}</p>
+      <p>${element['description']}</p>
+      </div>`
+      productDisplay.appendChild(div);
+    });
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    document.getElementById('loaddata').innerText = 'Error fetching product.';
+  }
+  finally{
+    const element = document.getElementById("header");
+    element.classList.remove("animate-reverse");
+    element.classList.remove("animate");
+    setTimeout(element.classList.add("animate"), 2000);
+  }
 }
