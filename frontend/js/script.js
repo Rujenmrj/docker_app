@@ -11,10 +11,10 @@ async function fetchData() {
       div=document.createElement('div');
       div.setAttribute('class',"card");
       div.setAttribute('id',`card${i}`);
-      div.setAttribute('onclick',`fetchViewProduct('bir')`);
-      div.innerHTML=`<div class="img-card"><img src="${element['img']}" alt="product image"></div>
+      div.setAttribute('onclick',`fetchViewProduct('${element['product_id']}')`);
+      div.innerHTML=`<div class="img-card"><img src="https://image.rujenm.com.np/${element['product_id']}.png" alt="product image"></div>
       <div class="card-body">
-      <h3>${element['name']}</h3>
+      <h3>${element['product_name']}</h3>
       <p>Price: ${element['price']}</p>
       <p>${element['description']}</p>
       </div>`
@@ -41,23 +41,36 @@ async function loading(){
 async function fetchViewProduct(id){
   try {
     await loading();
-    const response = await fetch(`https://backend.rujenm.com.np/api/product/${id}`);
+    console.log(`fetching from https://backend.rujenm.com.np/api/product/view?id=${id}`);
+    const response = await fetch(`https://backend.rujenm.com.np/api/product/view?id=${id}`);
+
     const data = await response.json();
-    console.log('Product fetched:', data);
-    const productDisplay = document.getElementById('loadview');
-    let i=0;
+    console.log('viewing product:', data);
+    const temp=document.getElementById('loaddata');
+    temp.innerHTML='';
+        console.log("clear screen");
     data.forEach(element => {
-      i++;
-      div=document.createElement('div');
-      div.setAttribute('class',"card");
-      div.setAttribute('id',`card${i}`);
-      div.innerHTML=`<div class="img-card"><img src="${element['img']}" alt="product image"></div>
-      <div class="card-body">
-      <h3>${element['name']}</h3>
-      <p>Price: ${element['price']}</p>
-      <p>${element['description']}</p>
-      </div>`
-      productDisplay.appendChild(div);
+      productBox=document.createElement('main');
+      console.log("created element");
+        productBox.classList.add('product-box');
+        console.log("added class");
+        productBox.innerHTML=`<section class="img-sec">
+            <div class="main-image"><img src="https://image.rujenm.com.np/${element['product_id']}.png" alt=""></div>
+            <div class="alternate">
+                <img src="https://image.rujenm.com.np/${element['product_id']}.png" alt="not here">
+                <img src="https://image.rujenm.com.np/${element['product_id']}.png" alt="not here">
+                <img src="https://image.rujenm.com.np/${element['product_id']}.png" alt="not here">
+            </div>
+        </section>
+        <section class="detail-sec">
+            <span>${element['product_name']}</span><span>${element['price']}</span>
+            <div class="btn-container">
+                <button>buy now</button><button>add to cart</button>
+            </div>
+        </section>`
+        console.log("added inner html");
+      // productDisplay.appendChild(div);
+      temp.appendChild(productBox);
     });
   } catch (error) {
     console.error('Error fetching product:', error);

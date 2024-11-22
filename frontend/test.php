@@ -4,55 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .productcard{
-            width: 80%;
-            min-height: 70vh;
-            border-radius: 10px;
-            overflow: hidden;
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .product-box{
             background-color: bisque;
             display: flex;
+            min-height: 70vh;
+            max-width: 70%;
+            border-radius: 10%;
         }
-        .productcard img{
-            width: 25%;
-            height: 25%;
-            object-fit: cover;
-            padding: 1%;
+        .img-sec{
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
         }
-        .altimages img{
-            width: 5%;
-            height: 5%;
-            object-fit: cover;
-            padding: 1%;
+        .detail-sec{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .main-image{
+            display: flex;
+            justify-content: center;
+        }
+        .main-image img{
+            padding: 3%;
+            width: 50%;
+        }
+        .alternate{
+            display: flex;
+            justify-content: space-evenly;
+            width: 50%;
+        }
+        .alternate img{
+            width: 20%;
+            aspect-ratio: 1/1;
+        }
+        .btn-container{
+            display: flex;
+            justify-content: space-evenly;
+            width: 50%;
+        }
+        .btn-container button{
+            padding: 5%;
+            border: none;
+            border-radius: 5%;
+            background-color: rgb(175, 157, 132);
+            color:white;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <?php
-    // include 'header.html';
-    ?>
-    <div class="productcard">
-        <div class="productimages">
-            <img src="https://image.rujenm.com.np/placehold.png" alt="image of something">
-            <div class="altimages">
-                <img src="https://image.rujenm.com.np/placehold.png" alt="image of something">
-                <img src="https://image.rujenm.com.np/placehold.png" alt="image of something">
-                <img src="https://image.rujenm.com.np/placehold.png" alt="image of something">
+    <div id="test"></div>
+    <script>
+        productBox=document.createElement('main');
+        productBox.classList.add('product-box');
+        productBox.innerHTML=`<section class="img-sec">
+            <div class="main-image"><img src="https://image.rujenm.com.np/placehold.png" alt=""></div>
+            <div class="alternate">
+                <img src="https://image.rujenm.com.np/placehold.png" alt="not here">
+                <img src="https://image.rujenm.com.np/placehold.png" alt="not here">
+                <img src="https://image.rujenm.com.np/placehold.png" alt="not here">
             </div>
-        </div>
-        <div class="productdetail">
-            <h2>product name</h2>
-            <h3>price</h3>
-            <button>buy now</button>
-            <button>add to cart</button>
-            <iframe src="" frameborder="0"></iframe>
-        </div>
-    </div>
+        </section>
+        <section class="detail-sec">
+            <span>name of product</span><span>price</span>
+            <div class="btn-container">
+                <button>buy now</button><button>add to cart</button>
+            </div>
+        </section>`
+
+        document.getElementById('test').appendChild(productBox);
+    </script>
 </body>
 </html>

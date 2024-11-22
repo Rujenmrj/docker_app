@@ -33,10 +33,10 @@ let pool;
         
         
         // Start SQL and run a sample query
-        export async function startsql() {
+        export async function selectSql(sql) {
           try {
             console.log('Running a query...');
-            const users = await runQuery('SELECT * FROM users');
+            const users = await runQuery(sql);
             console.log('Query results:', users);
             return users; // Return the query results
           } catch (err) {

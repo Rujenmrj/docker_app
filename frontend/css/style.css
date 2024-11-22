@@ -98,3 +98,54 @@ header{
 .inactive{
     flex:0;
 } */
+
+.product-box{
+    background-color: bisque;
+    display: flex;
+    min-height: 70vh;
+    max-width: 70%;
+    border-radius: 10%;
+}
+.img-sec{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.detail-sec{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.main-image{
+    display: flex;
+    justify-content: center;
+}
+.main-image img{
+    padding: 3%;
+    width: 50%;
+}
+.alternate{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}
+.alternate img{
+    width: 20%;
+    aspect-ratio: 1/1;
+}
+.btn-container{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+}
+.btn-container button{
+    padding: 5%;
+    border: none;
+    border-radius: 5%;
+    background-color: rgb(175, 157, 132);
+    color:white;
+    cursor: pointer;
+}
